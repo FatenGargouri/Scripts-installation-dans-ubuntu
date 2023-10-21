@@ -28,7 +28,7 @@ sudo systemctl enable docker
 
 # Verify the Docker and Docker Compose installations
 docker --version
-docker-compose --version
+docker compose --version
 
 # Output a message for the user
 echo "Docker and Docker Compose are now installed. You may need to log out and back in or restart your system for group membership changes to take effect."
