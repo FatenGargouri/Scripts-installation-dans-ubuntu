@@ -4,8 +4,8 @@
 sudo apt update
 
 # Add Jenkins repository and its GPG key
-wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
-sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]  https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
 
 # Update package repository
 sudo apt update
@@ -36,4 +36,3 @@ echo "Jenkins is now installed and running on your server."
 echo "To complete the setup, open a web browser and navigate to:"
 echo "http://your_server_ip_or_domain:8080"
 echo "Enter the administrator password when prompted and follow the Jenkins setup wizard."
-
