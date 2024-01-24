@@ -1,26 +1,14 @@
 #!/bin/bash
 
-# Check if the user has superuser privileges
-if [[ "$EUID" -ne 0 ]]; then
-  echo "This script needs superuser privileges. Please run it as root or using sudo."
-  exit 1
-fi
+# Télécharger Apache JMeter 5.6.3
+wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.6.3.zip
 
-# Update package list
-apt update
+# Extraire l'archive
+unzip apache-jmeter-5.6.3.zip
 
-# Install JMeter
-apt install -y jmeter
+# Afficher la version de JMeter
+./apache-jmeter-5.6.3/bin/jmeter --version
 
-# Check if JMeter installation was successful
-if [ $? -eq 0 ]; then
-  echo "JMeter has been successfully installed."
-else
-  echo "JMeter installation failed."
-fi
+# Lancer JMeter
+./apache-jmeter-5.6.3/bin/jmeter
 
-# Display JMeter version
-jmeter -v
-
-# Exit the script
-exit 0
